@@ -9,8 +9,9 @@ logger = logging.getLogger()
 
 
 # logger = logging.getLogger()
-
-
+########################
+##will change to TimescaleDB
+########################
 class Hdf5Client:
     # 'a' = append mode , can read and write and will create file
     def __init__(self, exchange: str):

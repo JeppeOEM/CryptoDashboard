@@ -1,16 +1,17 @@
 import random
 import typing
 import copy
-from main_app.models.BacktestResult import BacktestResult
-from main_app.trading_engine.process_conds import create_conds
-from main_app.trading_engine.optimize_backtest import optimize_backtest
+from models.trading_engine.BacktestResult import BacktestResult
+from trading_engine.process_conds import create_conds
+from trading_engine.optimize_backtest import optimize_backtest
 
-from main_app.functions.utilities.backtesting_utils import STRAT_PARAMS, CONDITIONS, resample_timeframe
+from setting_objects.settings_backtesting import STRAT_PARAMS, CONDITIONS
+from utility_functions import resample_timeframe
 # import strategies.obv
 # import strategies.ichimoku
 # import strategies.support_resistance
-from main_app.database.db import get_db
-from main_app.data_download.Hdf5 import Hdf5Client
+from database.db import get_db
+from data_download.Hdf5 import Hdf5Client
 
 
 def set_contraints(bool: bool, params: typing.Dict) -> bool:

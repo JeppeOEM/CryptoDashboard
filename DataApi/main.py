@@ -17,5 +17,5 @@ def read_root():
 #basic query
 #http://127.0.0.1:8000/items/1?q=lol
 @app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
+def read_item(item_id: int, q: Union[str, None] = None, q_2: Union[str, None] = None):
+    return {"item_id": item_id, "q": q,"q2":q_2}
