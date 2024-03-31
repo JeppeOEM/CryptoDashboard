@@ -19,7 +19,7 @@ const addItem = (size: GridItemSize) => {
     const newItem: DynamicGridItem = { id: prevItems.length, size };
     console.log([...prevItems, newItem]); 
     SectionService.create([...prevItems, newItem]); 
-    // SectionService.getAll() 
+
     return [...prevItems, newItem]; 
   });
 };
