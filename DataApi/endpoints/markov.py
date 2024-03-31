@@ -63,7 +63,7 @@ def plot_plot(all_labels, colors, reqDict, number_of_states):
         plt.plot(label, colors[i])
 
     plt.savefig(
-        f"data/plots/{ts}_{ticker}_markov_s{number_of_states}_{market_type}.svg")
+        f"plots/{ts}_{ticker}_markov_s{number_of_states}_{market_type}.svg")
 
 
 def prepare_plot(df, hidden_states, requestDict):

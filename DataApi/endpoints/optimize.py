@@ -45,7 +45,7 @@ class OptiData(BaseModel):
     
 
 
-@router.post('/optimizer_params/', methods=['POST'])
+@router.post('/optimizer_params/', tags=['optimization'])
 def optimizer_params(opti_data: OptiData):
     db = get_db()
 
@@ -161,7 +161,7 @@ class Backtest(BaseModel):
     id: int
     name: str
 
-@router.post('/backtest/', methods=['POST'])
+@router.post('/backtest/', tags=["optimization"])
 def backtest(backtest: Backtest):
     id = backtest.id
     name = backtest.name

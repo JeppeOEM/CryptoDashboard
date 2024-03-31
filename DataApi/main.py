@@ -2,10 +2,12 @@ from typing import Union
 
 from fastapi import FastAPI, APIRouter
 from endpoints import markov
+from endpoints import optimize
 
 app = FastAPI()
 
 app.include_router(markov.router)
+app.include_router(optimize.router)
 
 
 
@@ -14,8 +16,3 @@ app.include_router(markov.router)
 def read_root():
     return {"Hello": "World"}
 
-#basic query
-#http://127.0.0.1:8000/items/1?q=lol
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None, q_2: Union[str, None] = None):
-    return {"item_id": item_id, "q": q,"q2":q_2}

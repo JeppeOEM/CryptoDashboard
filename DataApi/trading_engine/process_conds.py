@@ -123,9 +123,9 @@ def get_values(sql_rows):
 def get_strategy_params(id):
     db = get_db()
     buy = db.execute(
-        'SELECT optimization_name, class, data_type, operator, optimization_min, optimization_max FROM buy_optimization WHERE fk_strategy_id = ?', (id,)).fetchall()
+        'SELECT optimization_name, class, data_type, operator, optimization_min, optimization_max FROM optimizations WHERE fk_strategy_id = ? AND side = "buy"', (id,)).fetchall()
     sell = db.execute(
-        'SELECT optimization_name, class, data_type, operator, optimization_min, optimization_max FROM sell_optimization WHERE fk_strategy_id = ?', (id,)).fetchall()
+        'SELECT optimization_name, class, data_type, operator, optimization_min, optimization_max FROM optimizations WHERE fk_strategy_id = ? AND side = "sell"', (id,)).fetchall()
     s_arr = get_values(sell)
     b_arr = get_values(buy)
 
