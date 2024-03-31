@@ -1,5 +1,5 @@
 ### Semester Project in the full-stack elective
-WORK IN PROGRESS
+WORK IN PROGRESS, Frontend is not connected to backend yet
 
 A  typescript frontend dashboard which combines diffrent python microservices and a .NET api.
 It includes
