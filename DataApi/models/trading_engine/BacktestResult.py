@@ -1,6 +1,10 @@
 import typing
 import json
 
+## SOURCE ATTRIBUTION
+#BacktestResult is a class i got from this udemy course:
+#https://www.udemy.com/course/backtesting-crypto-trading-strategies-with-python-c/learn/lecture/28599068?start=0#overview
+
 class BacktestResult:
     def __init__(self):
         self.pnl: float = 0.0

@@ -22,6 +22,9 @@ def set_contraints(bool: bool, params: typing.Dict) -> bool:
         params['volume_BUY'] = max(params["volume_BUY"], params["RSI_15_BUY"])
         return bool
 
+## SOURCE ATTRIBUTION
+#Nsga2 is an Genetic algorithm i got from this udemy course:
+#https://www.udemy.com/course/backtesting-crypto-trading-strategies-with-python-c/learn/lecture/28599068?start=0#overview
 
 class Nsga2:
     def __init__(self, data, population_size: int, strategy_id: int, params_data):
