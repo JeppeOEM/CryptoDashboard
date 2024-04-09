@@ -9,7 +9,7 @@ It includes
 - DataCollectorScript, collects market data from binance trading platform every second and saves it in a timescaleDB database
 - DataApi a backtesting trading engine, which can optimize strategy parameters with a genetic algorithm (moving code in/refactoring from older project https://github.com/JeppeOEM/CryptoPlatform )
 - .NET api api to handle everything with authentication and be the connection to the frontend (Largely unfinished)
-- Typescript front (Largely unfinished)
+- Typescript frontend (Largely unfinished)
 
 I am in the process of going through DataApi and refactoring it from flask to FastAPI, aswell as adapting it to a typescript frontend, 
 instead of the basic jinja frontend it had before.
