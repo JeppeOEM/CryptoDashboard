@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { Box, Button, Grid, GridItem as ChakraGridItem } from '@chakra-ui/react';
-import SectionService from '../services/SectionService';
 import { GridItemSize } from '../types/GridItemSize';
 import GridItem from '../models/GridItem';
 import useGridItem from '../hooks/useGridItem';
@@ -12,10 +11,10 @@ import useGridItem from '../hooks/useGridItem';
 // }
 
 const GridDashboard = () => {
-  const { data: gridItems, isLoading, error } = useGridItem();
-
-  // const [gridItems, setGridItems] = useState<GridItem[]>([]);
-
+  const { data: gridItemsLoad, isLoading, error } = useGridItem();
+  console.log(gridItemsLoad)
+  const [gridItems, setGridItems] = useState<GridItem[]>([...gridItemsLoad || []]);
+  console.log(gridItems)
   const addItem = async (size: GridItemSize) => {
     try {
       const newItem: GridItem = { id: gridItems.length, size };
@@ -24,7 +23,11 @@ const GridDashboard = () => {
       console.error('Error while adding item:', error);
     }
   };
-
+  useEffect(() => {
+    if (gridItemsLoad) {
+      setGridItems(gridItemsLoad); // Update gridItems when gridItemsLoad is available
+    }
+  }, [gridItemsLoad]);
   // handle the API call after the state has been updated
   // to avoid double posting to the backend
   // useEffect(() => {

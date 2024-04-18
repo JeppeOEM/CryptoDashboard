@@ -19,6 +19,7 @@ builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 //registers the database context with the dependency injection container. 
 //When your application requests an instance of Context, the container will provide it.
 builder.Services.AddDbContext<Context>(options =>
+//DefaultConnection is from appsettings.json
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")
         ?? throw new InvalidOperationException("Connection string not found.")));
 

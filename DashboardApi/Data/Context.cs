@@ -26,6 +26,7 @@ public class Context : DbContext
     //In Entity Framework, the DbSet<T> class is typically used to represent a table in a database.
     // structure is defined in the "schemas" Stock / Company
     public virtual DbSet<Section> Sections { get; set; } = default!;
+    public virtual DbSet<User> Users { get; set; } = default!;
 
 
     //default;
