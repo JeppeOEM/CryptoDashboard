@@ -1,6 +1,6 @@
 import axios from "axios";
 import Section from "../models/Section";
-import DynamicGridItem from "../models/DynamicGridItem";
+import GridItem from "../models/GridItem";
 
 class SectionService {
   http = axios.create({
@@ -8,16 +8,21 @@ class SectionService {
   });
 
   async getAll(): Promise<Section[]> {
-    const response = await this.http.get<Section[]>("sections");
-    return response.data;
+    const response = await this.http.get<string[]>("sections");
+    return response.data.map((item: string) => JSON.parse(item));
   }
 
-    async create(data: DynamicGridItem[] ) {
-    const response = await this.http.post("sections", {
+  async getById(id: number): Promise<Section> {
+    const response = await this.http.get<string>(`sections/${id}`);
+    return JSON.parse(response.data);
+  }
+
+  async create(data: GridItem[] ) {
+    const response = await this.http.post<string>("sections", {
         GridConfig: JSON.stringify(data),
     });
-    return response.data;
-    }
+    return JSON.parse(response.data);
+  }
 
   async delete(id: string): Promise<void> {
     await this.http.delete(`sections/${id}`);
