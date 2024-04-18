@@ -10,7 +10,10 @@ using System.Reflection;
 
 
 var builder = WebApplication.CreateBuilder(args);
-//An assembly is a dll or exe compiled from projects code.
+
+//INFO: An assembly is a dll or exe compiled from projects code.
+
+//Here i running the mappings from MappingProfiles folder 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 //registers the database context with the dependency injection container. 
@@ -48,6 +51,7 @@ builder.Services.AddCors((options) =>
 //Using IoC, we’re delegating the responsibility of dealing with the DI to ASP.NET
 //Core native resources rather than doing it manually.
 //####################################################
+
 //AddScoped: a single instance of the service is created and used for the lifetime of a request
 builder.Services.AddScoped<ISectionRepo, SectionRepo>();
 

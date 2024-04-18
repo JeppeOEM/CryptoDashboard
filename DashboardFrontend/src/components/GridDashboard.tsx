@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Box, Button, Grid, GridItem } from '@chakra-ui/react';
 
 import SectionService from '../services/SectionService';
@@ -13,22 +13,36 @@ import DynamicGridItem from '../models/DynamicGridItem';
 const GridDashboard = () => {
   const [gridItems, setGridItems] = useState<DynamicGridItem[]>([]);
 
-const addItem = (size: GridItemSize) => {
-  // get access to state
-  setGridItems((prevItems) => {
-    const newItem: DynamicGridItem = { id: prevItems.length, size };
-    console.log([...prevItems, newItem]); 
-    SectionService.create([...prevItems, newItem]); 
+const addItem = async (size: GridItemSize) => {
+  try {
+    const newItem: DynamicGridItem = { id: gridItems.length, size };
+    setGridItems((prevItems) => [...prevItems, newItem]);
+  } catch (error) {
+    console.error('Error while adding item:', error);
+  }
+  };
 
-    return [...prevItems, newItem]; 
-  });
-};
+  // handle the API call after the state has been updated
+  // to avoid double posting to the backend
+  useEffect(() => {
+    (async () => {
+      try {
+        await SectionService.create(gridItems);
+      } catch (error) {
+        console.error('Error while adding item:', error);
+      }
+    })();
+  }, [gridItems]);
+
+  const handleAddSmallItem = () => addItem('small');
+  const handleAddMediumItem = () => addItem('medium');
+  const handleAddLargeItem = () => addItem('large');
 
   return (
     <Box>
-      <Button onClick={() => addItem('small')}>Add Small Item</Button>
-      <Button onClick={() => addItem('medium')}>Add Medium Item</Button>
-      <Button onClick={() => addItem('large')}>Add Large Item</Button>
+      <Button onClick={handleAddSmallItem}>Add Small Item</Button>
+      <Button onClick={handleAddMediumItem}>Add Medium Item</Button>
+      <Button onClick={handleAddLargeItem}>Add Large Item</Button>
 
       <Grid templateColumns="repeat(12, 1fr)" gap={6}>
         {gridItems.map((item) => (

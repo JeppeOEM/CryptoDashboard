@@ -45,7 +45,7 @@ def query_row_count():
     row_count = cursor.fetchone()[0]
     print("Number of rows in raw_trade_data table:", row_count)
     return row_count
-    connection.close()
+    # connection.close()
 
 def manipulate(data):
     try:
@@ -73,20 +73,36 @@ def on_message(message):
             except psycopg2.Error as e:
                 logging.error(f"Error during insertion: {e}")
 
-def connect():
+async def connect():
     while True:
         try:
-            websocket = websockets.connect("wss://stream.binance.com:9443/ws/" + stream_these)
-            asyncio.get_event_loop().run_until_complete(receive(websocket))
+            async with websockets.connect("wss://stream.binance.com:9443/ws/" + stream_these) as websocket:
+                await receive(websocket)
         except Exception as e:
             logging.error(f"Error during WebSocket connection: {e}")
-            # Add a delay before attempting to reconnect
-            time.sleep(5)  # You can adjust the delay time as needed
+            await asyncio.sleep(1)  
 
 async def receive(websocket):
     while True:
+        #recv() gets message async
         message = await websocket.recv()
         on_message(message)
 
 if __name__ == '__main__':
-    connect()
+    asyncio.run(connect())
+
+
+#    )
+# {
+#   "e": "trade",     // Event type
+#   "E": 123456789,   // Event time
+#   "s": "BNBBTC",    // Symbol
+#   "t": 12345,       // Trade ID
+#   "p": "0.001",     // Price
+#   "q": "100",       // Quantity
+#   "b": 88,          // Buyer order ID
+#   "a": 50,          // Seller order ID
+#   "T": 123456785,   // Trade time
+#   "m": true,        // Is the buyer the market maker?
+#   "M": true         // Ignore
+# }

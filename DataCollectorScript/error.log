@@ -1,0 +1,24 @@
+ERROR:root:Error during WebSocket connection: 'Connect' object has no attribute 'recv'
+ERROR:root:Error during WebSocket connection: 'Connect' object has no attribute 'recv'
+ERROR:root:Error during WebSocket connection: 'Connect' object has no attribute 'recv'
+ERROR:root:Error during WebSocket connection: 'Connect' object has no attribute 'recv'
+ERROR:root:Error during WebSocket connection: 'Connect' object has no attribute 'recv'
+ERROR:root:Error during WebSocket connection: 'Connect' object has no attribute 'recv'
+ERROR:root:Error during WebSocket connection: 'Connect' object has no attribute 'recv'
+ERROR:root:Error during WebSocket connection: 'Connect' object has no attribute 'recv'
+ERROR:root:Error during WebSocket connection: 'Connect' object has no attribute 'recv'
+ERROR:root:Error during WebSocket connection: 'Connect' object has no attribute 'recv'
+ERROR:root:Error during WebSocket connection: 'Connect' object has no attribute 'recv'
+ERROR:root:Error during WebSocket connection: 'Connect' object has no attribute 'recv'
+ERROR:root:Error during WebSocket connection: 'Connect' object has no attribute 'recv'
+ERROR:root:Error during WebSocket connection: 'Connect' object has no attribute 'recv'
+ERROR:root:Error during WebSocket connection: 'Connect' object has no attribute 'recv'
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task cancelling name='Task-1' coro=<connect() done, defined at C:\Users\jeppe\OneDrive\Desktop\WEB DEV\sem2\full stack\CryptoDashboard\DataCollectorScript\main.py:76> wait_for=<Future pending cb=[shield.<locals>._outer_done_callback() at C:\Users\jeppe\AppData\Local\Programs\Python\Python311\Lib\asyncio\tasks.py:898, Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\jeppe\AppData\Local\Programs\Python\Python311\Lib\asyncio\tasks.py:754]>
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task cancelling name='Task-4' coro=<WebSocketCommonProtocol.close_connection() running at C:\Users\jeppe\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\protocol.py:1311> wait_for=<Future pending cb=[shield.<locals>._outer_done_callback() at C:\Users\jeppe\AppData\Local\Programs\Python\Python311\Lib\asyncio\tasks.py:898, Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\jeppe\AppData\Local\Programs\Python\Python311\Lib\asyncio\tasks.py:754, shield.<locals>._inner_done_callback() at C:\Users\jeppe\AppData\Local\Programs\Python\Python311\Lib\asyncio\tasks.py:881]>
+ERROR:root:Error during WebSocket connection: sent 1011 (internal error) keepalive ping timeout; no close frame received
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task cancelling name='Task-1' coro=<connect() done, defined at C:\Users\jeppe\OneDrive\Desktop\WEB DEV\sem2\full stack\CryptoDashboard\DataCollectorScript\main.py:76> wait_for=<Future pending cb=[shield.<locals>._outer_done_callback() at C:\Users\jeppe\AppData\Local\Programs\Python\Python311\Lib\asyncio\tasks.py:898, Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\jeppe\AppData\Local\Programs\Python\Python311\Lib\asyncio\tasks.py:754]>
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task cancelling name='Task-7' coro=<WebSocketCommonProtocol.close_connection() running at C:\Users\jeppe\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\protocol.py:1311> wait_for=<Future pending cb=[shield.<locals>._outer_done_callback() at C:\Users\jeppe\AppData\Local\Programs\Python\Python311\Lib\asyncio\tasks.py:898, Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\jeppe\AppData\Local\Programs\Python\Python311\Lib\asyncio\tasks.py:754, shield.<locals>._inner_done_callback() at C:\Users\jeppe\AppData\Local\Programs\Python\Python311\Lib\asyncio\tasks.py:881]>

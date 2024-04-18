@@ -6,10 +6,7 @@ public class SectionDto
 
     public SectionDto()
     {
-        if (GridConfig == null)
-        {
-            GridConfig = "";
-        }
+        GridConfig ??= "";
     }
 
 

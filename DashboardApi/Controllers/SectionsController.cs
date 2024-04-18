@@ -78,9 +78,15 @@ namespace DashboardApi.Controllers
         {
             var section = _mapper.Map<Section>(sectionDto);
             await _sectionRepo.AddSection(section);
-
             var createdSectionDto = _mapper.Map<SectionDto>(section);
-            return CreatedAtAction(nameof(GetSection), new { id = createdSectionDto.GridConfig }, createdSectionDto);
+
+            var responseWithMessage = new
+            {
+                CreatedSection = createdSectionDto,
+                Message = "Succefully saved to database"
+            };
+            Console.WriteLine("HIT");
+            return CreatedAtAction(nameof(GetSection), new { id = createdSectionDto.GridConfig }, responseWithMessage);
         }
 
         [HttpDelete("{id}")]
