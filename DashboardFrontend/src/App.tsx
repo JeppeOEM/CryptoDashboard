@@ -2,13 +2,13 @@ import './App.css';
 import { Grid, GridItem } from '@chakra-ui/react';
 import NavBar from './components/NavBar';
 import CustomGrid from './components/CustomGrid';
-import GridDashboard from './components/GridDashboard';
+import GridDashboard from './components/GridDashboard/GridDashboard';
 import React from 'react';
 
 function App() {
   return (
-    <React.StrictMode> 
-      
+    <React.StrictMode>
+
       <Grid
         templateAreas={{
           base: '"nav" "main"',

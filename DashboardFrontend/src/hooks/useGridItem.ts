@@ -5,9 +5,10 @@ import {GridItemClass} from "../models/GridItem";
 
 const useGridItem = () => {
   const fetchGridItems = async () => {
-    const response = await GridItemClient.get(238); 
+    //input the id of the grid you want to fetch
+    const response = await GridItemClient.get(238);
     console.log(response.gridConfig)
-    const gridItemsData = JSON.parse(response.gridConfig); 
+    const gridItemsData = JSON.parse(response.gridConfig);
     const gridItems = gridItemsData.map((item: GridItem) => new GridItemClass(item));
     return gridItems;
   };
