@@ -1,20 +1,37 @@
 import { create } from "zustand";
+import { GridItemSize } from "../../types/GridItemSize";
+import GridItem from "../../models/GridItem";
 
-export interface Task {
-id: number;
-title: string;
+interface GridStore {
+gridItems: GridItem[];
+counter: number;
+add: (size: GridItemSize) => void;
+remove: (gridItemId: number) => void;
+setGridItems: (list: GridItem[]) => void;
 }
-interface TaskStore {
-tasks: Task[];
-add: (task: Task) => void;
-remove: (taskId: number) => void;
-}
-const useTaskStore = create<TaskStore>((set) => ({
-tasks: [],
-add: (task) => set((state) => ({ tasks: [...state.tasks, task] })),
-remove: (taskId) =>
-set((state) => ({
-tasks: state.tasks.filter((task) => task.id !== taskId),
-})),
+
+const useGridStore = create<GridStore>((set) => ({
+  gridItems: [],
+  counter: 0,
+  add: (size) => {
+    try {
+      set((state) => ({
+        gridItems: [...state.gridItems, { id: state.counter, size }],
+        counter: state.counter + 1, // Increment counter
+      }));
+    } catch (error) {
+      console.error('Error while adding item:', error);
+    }
+  },
+  remove: (gridItemId) =>
+    set((state) => ({
+      gridItems: state.gridItems.filter((gridItem) => gridItem.id !== gridItemId),
+    })),
+  setGridItems: (newGridItems: GridItem[]) =>
+    set(() => ({
+      gridItems: newGridItems,
+    })),
 }));
-export default useTaskStore;
+
+
+export default useGridStore;

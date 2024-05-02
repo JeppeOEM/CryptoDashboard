@@ -1,16 +1,17 @@
 import React, { useState } from "react";
-import AuthService from "../services/auth/AuthService";
-
+// import AuthService from "../../services/auth/AuthService";
+import useAuthStore from "./authStore";
+import { Button } from "@chakra-ui/react";
 const LoginForm: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-
+  const {isAuthenticated, login, logout} = useAuthStore();
   const handleLogin = async () => {
     setLoading(true);
     try {
-      await AuthService.login(email, password);
+      await login(email, password);
       // If login successful, you can redirect to another page or update UI accordingly
     //   window.location.reload();
     } catch (error) {
@@ -20,25 +21,38 @@ const LoginForm: React.FC = () => {
     }
   };
 
+
+
+
   return (
     <div>
-      <h2>Login</h2>
       {error && <div>{error}</div>}
-      <input
+
+      {!isAuthenticated && (
+      <div>
+        <input
         type="text"
         placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
+        />
+        <input
         type="password"
         placeholder="Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
+
       <button onClick={handleLogin} disabled={loading}>
         {loading ? "Logging in..." : "Login"}
       </button>
+      </div>
+      )}
+     {isAuthenticated && (
+        <Button colorScheme="red" onClick={() => logout()}>
+          Logout
+        </Button>
+      )}
     </div>
   );
 };

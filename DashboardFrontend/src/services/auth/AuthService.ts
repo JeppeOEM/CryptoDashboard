@@ -4,9 +4,9 @@ import axios from "axios";
 
 class AuthService {
   login(email: string, password: string) {
-    console.log(import.meta.env.VITE_API_URL + "user/token/","fucking token")
+    console.log(import.meta.env.VITE_API_URL + "user/login/","fucking token")
     return axios
-      .post(import.meta.env.VITE_API_URL + "user/token/", {
+      .post(import.meta.env.VITE_API_URL + "user/login/", {
         email,
         password
       })
